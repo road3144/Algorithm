@@ -1,4 +1,5 @@
 import sys
+
 input = sys.stdin.readline
 
 n = int(input())
@@ -6,7 +7,7 @@ data = list(map(int, input().split()))
 data.sort()
 
 m = int(input())
-data2 = list(map(int, input().split(),))
+data2 = list(map(int, input().split(), ))
 result = [0] * (m)
 
 
@@ -29,3 +30,5 @@ for i in range(m):
         result[i] = 1
 for i in result:
     print(i)
+
+# 자료구조 set 활용 가능 set의 원소 존재 여부 탐색은 O(1)다.
