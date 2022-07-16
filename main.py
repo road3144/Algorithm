@@ -18,6 +18,6 @@ for i in range(n):
         stack1.pop()
     if commend == 'P':
         stack1.append(item)
-print()
+
 print(''.join(stack1 + list(reversed(stack2))))
 print('sdsa')
