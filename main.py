@@ -20,3 +20,4 @@ for i in range(n):
         stack1.append(item)
 
 print(''.join(stack1 + list(reversed(stack2))))
+print('hi')
