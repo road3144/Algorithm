@@ -3,32 +3,27 @@ input = sys.stdin.readline
 
 n = int(input())
 data = []
-s = []
 minAns = int(2e9)
 for _ in range(n):
     data.append(list(map(int, input().split())))
 
-def dfs():
+
+def dfs(start, next, value):
     global minAns
-    if len(s) == n:
-        ans = 0
-        for q in range(n-1):
-            if data[s[q]][s[q+1]] == 0:
-                ans += minAns
-            ans += data[s[q]][s[q+1]]
-        if data[s[n-1]][s[0]] == 0:
-            ans += minAns
-        ans += data[s[n-1]][s[0]]
-        minAns = min(ans, minAns)
+    if len(visited) == n:
+        if data[next][start] != 0:
+            minAns = min(minAns, value + data[next][start])
         return
 
     for i in range(n):
-        if i not in s:
-            s.append(i)
-            dfs()
-            s.pop()
+        if data[next][i] != 0 and i not in visited and value < minAns:
+            visited.append(i)
+            dfs(start, i, value + data[next][i])
+            visited.pop()
 
 
-dfs()
+for i in range(n):
+    visited = [i]
+    dfs(i, i, 0)
+
 print(minAns)
-# pypy3 only
