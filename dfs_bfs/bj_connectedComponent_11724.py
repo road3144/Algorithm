@@ -12,7 +12,7 @@ for _ in range(m):
     graph[v].append(u)
 
 
-def bfs(graph, visited, start, cnt):
+def bfs(start, cnt):
     queue = deque()
     queue.append(start)
     visited[start] = cnt
@@ -27,7 +27,7 @@ def bfs(graph, visited, start, cnt):
 cnt = 1
 for i in range(1, n+1):
     if visited[i] == 0:
-        bfs(graph, visited, i, cnt)
+        bfs(i, cnt)
         cnt = cnt + 1
 
 print(max(visited))
