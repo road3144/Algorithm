@@ -1,10 +1,22 @@
 import sys
-
+from collections import defaultdict
 input = sys.stdin.readline
 
-n = int(input())
+n = str(input().rstrip())
+dic = defaultdict()
 
-if n % 2 == 0:
-    print('CY')
+for i in n:
+  dic[i] += 1
+
+ma = max(dic.values())
+ma_k = ''
+flag = 0
+for k, v in dic.items():
+    if v == ma:
+        ma_k = k
+        flag += 1
+
+if flag > 1:
+    print('?')
 else:
-    print("SK")
+    print(ma_k)
