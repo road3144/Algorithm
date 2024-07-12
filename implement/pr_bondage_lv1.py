@@ -1,23 +1,18 @@
 def solution(bandage, health, attacks):
     t, x, y = bandage
-    last_time = 0
-    now_health = health
+    answer = 0
+    now = 0
+    for attack_time, damage in attacks:
+        heal_time = attack_time - now - 1
+        health += heal_time * x
+        health += (heal_time // t) * y
 
-    for time, damage in attacks:
-        flow = (time - last_time) - 1
-        now_health += (flow * x) + (y * (flow // t))
-        if now_health >= health:
-            now_health = health
-
-        now_health -= damage
-        if now_health <= 0:
-            now_health = -1
+        health -= damage
+        if health <= 0:
+            answer = -1
             break
-        last_time = time
 
-    if now_health <= 0:
-        now_health = -1
-    return now_health
+    return answer
 
 
 bondage = [5, 1, 5]
